@@ -1,71 +1,68 @@
-# React: Hacker Dormitory
 
-Given a partially completed React application with the HTML template and few built-in functionalities, your task is to implement a resident directory that makes note of a list of residents in the dormitory.
+# React Resident Dormitory
+This is a React application that implements a resident directory for a dormitory. The application allows users to search for and add residents to the dormitory based on their name and joining date. The application also provides error messages for cases where the student is not a verified student or their validity has expired.
 
-Certain core React functionalities have already been implemented. Complete the React application as shown below in order to pass all the unit tests.
+## Components
+The application consists of the following components:
 
-![](https://hrcdn.net/s3_pub/istreet-assets/DyxnWZZfQtoe9d6OG9hEwA/Screen%20Recording%202020-06-25%20at%209.45.30%20PM.gif)
+Search: This component provides input fields for entering the student's name and joining date. It also includes a button to add the student to the dormitory.
 
-The application has 3 Components:
- - The _Search_ view, which has two inputs: 'Student Name', where the user can type a student's name, and 'Joining Date', a date field denoting when the student will join the dormitory.
- - The _ResidentsList_ view, which shows all the residents' names.
- - The _Error_ view, which is shown in case of an error.
+ResidentsList: This component displays the list of residents in the dormitory.
 
-The `studentsList.js` file holds the _STUDENTS_ constant, which holds the _name_ and _validityDate_ of all the students who are part of the college. The structure of the _STUDENTS_ variable is as follows:
-- _name_: The name of the student. `<String>`
-- _validityDate_: The last valid day the student can be added to the dormitory. `<String>` of format `<yyyy-mm-dd>`
+Error: This component is shown in case of an error, such as when the student is not a verified student or their validity has expired.
 
-The function _checkValidity_ takes two arguments: _joiningDate_ and _validityDate_. It needs to be called to check if the student’s joining date is valid.
- - _joiningDate_: The date when the student will join the dormitory. `<String>` of format `<yyyy-mm-dd>`
- - _validityDate_: The last valid day the student can be added to the dormitory. `<String>` of format `<yyyy-mm-dd>`
+## Functionality
+The application implements the following functionality:
 
-The app should implement the following functionalities:
-- On providing student's name and joining date, the following should happen:
-   - It should check for the student's name in the _STUDENTS_ list , without case sensitivity.
-   - The _checkValidity(...)_ function needs to be called to check if the student’s joining date is valid.
-- If the student is part of the college and the joining date is valid, then they should be added to the 'Residents List' `<ul>`.
-- If the student  is not part of the college, then show the following error message:
-   - _"Sorry, `<NAME>` is not a verified student!"_
-   - `<NAME>` represents the name of the student who is being checked if they are part of the college.
- - If the student's name is valid but the joining date is after the student's validity date, then show the following error message:
-    - _"Sorry, `<NAME>`'s validity has Expired!"_
-    - `<NAME>` represents the name of the student whose validity is being checked for.
- - After adding each student, the form should be cleared out.
+When the user enters a student's name and joining date and clicks the "Add" button, the application performs the following checks:
 
-### Note:
-- Retrieve the list of college students from the `studentsList.js` file.
+It checks if the student's name exists in the list of verified students.
+It calls the checkValidity function to validate the joining date against the student's validity date.
+If the student is a verified student and the joining date is valid, the student is added to the list of residents in the dormitory.
 
-The following data-testid attributes are required in the component for the tests to pass:
+If the student is not a verified student, an error message is displayed: "Sorry, <NAME> is not a verified student!"
 
-- The 'Student Name' `<input>` tag should have the data-testid 'studentName'.
-- The 'Joining Date' `<input>` tag should have the data-testid 'joiningDate'.
-- The 'Add' `<button>` tag should have the data-testid 'addBtn'.
-- The error message `<div>` tag should have the data-testid 'errorMsg'.
-- The 'Residents List' `<ul>` should have the data-testid 'residentsNameList'.
+If the student's validity has expired, an error message is displayed: "Sorry, <NAME>'s validity has expired!"
 
-Please note that the component has the above data-testid attributes for test cases. It is advised not to change them.
+After adding each student, the input fields in the Search component are cleared.
 
-## Environment 
+## Test Cases
+The application includes unit tests to ensure the correctness of its implementation. The tests cover various scenarios, including adding a verified student, adding a non-verified student, and adding a student with an expired validity.
 
-- React Version: 16.13.1
-- Default Port: 8000
+## Running the Application
+
+To run the application, follow these steps:
 
 
-**Read Only Files**
-- `src/App.test.js`
+1. Clone the repository to your local machine.
 
+2. Install the required dependencies by running the following command in the project directory:
 
-**Commands**
-- run: 
-```bash
-npm start
-```
-- install: 
 ```bash
 npm install
 ```
-- test: 
+3. Start the application by running the following command:
+
 ```bash
-npm test
+npm start
 ```
 
+4. Open your web browser and visit http://localhost:8000 to access the application.
+
+## File Structure
+
+The relevant files for this application are organized as follows:
+
+### src/App.js: This file contains the main logic and components of the application.
+
+### src/utils.js: This file includes the checkValidity function used to validate the joining date against the student's validity date.
+
+### src/studentsList.js: This file holds the list of verified students.
+
+### src/App.test.js: This file contains the unit tests for the application.
+
+Feel free to explore and modify the code to understand and enhance the functionality of the application.
+
+## Environment
+React Version: 16.13.1
+Default Port: 8000
